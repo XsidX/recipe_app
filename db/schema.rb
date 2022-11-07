@@ -18,8 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_102308) do
     t.bigint "user_id", null: false
     t.string "name"
     t.string "measurement_unit"
-    t.integer "price", default: 0
-    t.integer "quantity", default: 0
+    t.decimal "price", precision: 5, scale: 2, default: "0.0"
+    t.decimal "quantity", precision: 5, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_foods_on_user_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_102308) do
   create_table "recipe_foods", force: :cascade do |t|
     t.bigint "food_id", null: false
     t.bigint "recipe_id", null: false
-    t.integer "quantity", default: 0
+    t.decimal "quantity", precision: 5, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["food_id"], name: "index_recipe_foods_on_food_id"
@@ -38,10 +38,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_102308) do
   create_table "recipes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.integer "preparation_time"
-    t.integer "cooking_time"
+    t.decimal "preparation_time", precision: 5, scale: 2
+    t.decimal "cooking_time", precision: 5, scale: 2
     t.text "description"
-    t.boolean "public"
+    t.boolean "public", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
