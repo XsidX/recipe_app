@@ -1,1 +1,17 @@
-<p>all public recipes go here..</p>
+<h1>Public recipes</h1>
+<br/>
+  <% @public_recipes.each do |recipe| %> 
+
+    <h2><%= recipe.name %></h2>
+
+    <p>Total food items: <%= recipe.foods.count %></p>
+
+    <% cost = recipe.foods.map do |recipe_food| %>
+      <% recipe_food.price * recipe_food.quantity %>
+    <% end %>
+      
+    <p>Total price: <%= "$#{cost.sum}" %></p>
+      
+    <h3>By: <%= recipe.user.name %></h3>
+      <br/>
+  <% end %>
