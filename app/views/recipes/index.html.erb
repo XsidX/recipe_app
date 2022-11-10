@@ -1,1 +1,3 @@
-<p>all recipes go here</p>
+<% @recipes.each do |recipe| %>
+  <%= render 'shared/recipes_card', recipe: recipe %>
+<% end %>
