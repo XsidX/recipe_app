@@ -12,7 +12,8 @@
   </head>
 
   <body>
-    <main id="main-container" class="p-4 md:px-48 bg-yellow-100 min-h-screen">
+  <%= render 'shared/nav' %>
+    <main id="main-container" class="p-4 mt-20 md:px-48 bg-yellow-100 min-h-screen">
       <%= render 'shared/messages' %>
       <%= yield %>
     </main>
