@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get "/public_recipes", to: "public_recipes#index"
 
   resources :foods, only: [:index]
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show, :destroy, :update]
+  resources :recipe_foods, only: [:create, :update]
 
   get "/general_shopping_list", to: "general_shopping_list#index"
 
