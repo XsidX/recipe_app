@@ -30,6 +30,12 @@
     text-align: center;
 }
 
+.food-table th {
+    border-left: 1px solid #727272;
+    border-right: 1px solid #727272;
+    padding-bottom: 15px;
+}
+
 .wrapper {
     margin-top: 50px;
     padding: 2rem;
