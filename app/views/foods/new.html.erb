@@ -1,0 +1,18 @@
+<div class="min-h-screen bg-gray-100 text-gray-800 antialiased py-6 flex">
+<h1 class="text-2xl font-light">Create Food</h1>
+<%= form_with model: @food, method: :post do |f| %>
+  <div class="px-8 py-6">
+    <%= f.label :name, class: "block font-semibold" %>
+    <%= f.text_field :name, class: "border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md"%>
+    <%= f.label :quantity, class: "block font-semibold" %>
+    <%= f.number_field :quantity, placeholder: 0, class: "border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md" %>
+    <%= f.label :measurement_unit, class: "block font-semibold" %>
+    <%= f.text_field :measurement_unit, class: "border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md" %>
+    <%= f.label :price, class: "block font-semibold" %>
+    <%= f.number_field :price, class: "border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md" %>
+  </div>
+    <button>
+      <%= f.submit 'Submit'%>
+    </button>
+<% end %>
+</div>

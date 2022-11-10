@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   get "/public_recipes", to: "public_recipes#index"
 
-  resources :foods, only: [:index]
+
+  resources :foods, except: [:edit, :update]
+
   resources :recipes, only: [:index, :show, :destroy, :update]
   resources :recipe_foods, only: [:create, :update]
 

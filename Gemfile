@@ -74,4 +74,5 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'bullet', group: 'development'
 gem 'tailwindcss-rails', '~> 2.0'

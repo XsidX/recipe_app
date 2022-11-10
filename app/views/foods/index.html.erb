@@ -1,1 +1,25 @@
-<p>foods go here....</p>
+<%= link_to "Add food", new_food_path %>
+<div>
+  <% if @foods.any? %>
+    <table>
+      <tr>
+        <th>Food</th>
+        <th>Measurement Unit</th>
+        <th>Unit Price</th>
+        <th>Action</th>
+      </tr>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= "USD #{food.price}" %></td>
+          <td>
+            <%= button_to "Delete", food_path(food.id), method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <h1>No food in your list.</h1>
+  <% end %>
+</div>
