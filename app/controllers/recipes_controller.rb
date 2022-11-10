@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-
   before_action :set_recipe, only: %i[show destroy update]
   def index
     @recipes = Recipe.all.select { |recipe| recipe.user == current_user }
@@ -33,5 +32,4 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:public)
   end
-
 end
