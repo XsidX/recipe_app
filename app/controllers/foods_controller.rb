@@ -16,7 +16,7 @@ class FoodsController < ApplicationController
     respond_to do |format|
       format.html do
         if @food.save
-          flash[:success] = 'Food created successfully'
+          flash[:notice] = 'Food created successfully'
           redirect_to foods_path
         else
           flash[:error] = 'Food not created'
@@ -29,7 +29,7 @@ class FoodsController < ApplicationController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
-    flash[:notice] = 'Food was deleted!'
+    flash[:success] = 'Food was deleted!'
     redirect_to request.referrer
   end
 
