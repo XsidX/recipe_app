@@ -1,0 +1,46 @@
+<div>
+  <h2 class="text-orange-900 tracking-widest text-xl border-b border-orange-800 pb-2 mb-4 inline"><%= @recipe.name %></h2>
+
+  <div class="flex justify-between px-4">
+    <ul class="flex flex-col py-4 gap-2 text-orange-700">
+      <% pt = @recipe.preparation_time%>
+      <% pt_fr = (pt == pt.to_i) ? pt.to_i : pt.to_s.to_r.divmod(1).join(' ') %>
+      <% ct = @recipe.cooking_time%>
+      <% ct_fr = (ct == ct.to_i) ? ct.to_i : ct.to_s.to_r.divmod(1).join(' ') %>
+      <li>Preparation time: <%= pluralize(pt_fr, 'hr') %></li>
+      <li>Cooking time: <%= pluralize(ct_fr, 'hr') %> </li>
+      <li>Steps go here...</li>
+    </ul>
+<!--    update public record in the recipe table-->
+    <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
+      <button type="submit">
+        <label for="public-toggle" class="inline-flex relative items-center mr-5 cursor-pointer">
+          <%= f.check_box :public, { class: "sr-only peer", id: "public-toggle" } %>
+          <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-orange-300 dark:peer-focus:ring-orange-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-orange-500"></div>
+          <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Public</span>
+        </label>
+      </button>
+    <% end %>
+
+  </div>
+
+</div>
+<div class="flex justify-between items-center p-4" data-controller="modals">
+  <%= link_to  general_shopping_list_path do%>
+    <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-orange-900 rounded-lg group bg-gradient-to-br from-orange-400 to-orange-600 group-hover:from-orange-400 group-hover:to-orange-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-orange-200 dark:focus:ring-orange-800 transition ease-in duration-100">
+    <span class="relative flex gap-1 items-center px-5 py-2.5 transition-all ease-in duration-75 bg-yellow-100 dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+      <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+      Generate shopping list
+    </span>
+    </button>
+  <% end %>
+  <div class="relative">
+    <button type="button" data-modals-target="openIngredientModal" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-orange-900 rounded-lg group bg-gradient-to-br bg-gradient-to-br from-orange-400 to-orange-600 group-hover:from-orange-400 group-hover:to-orange-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-orange-200 dark:focus:ring-orange-800 transition ease-in duration-100">
+      <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-yellow-100 dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+          Add ingredients
+      </span>
+    </button>
+    <%= render 'shared/add_ingredients_modal', recipe_food: RecipeFoodsController.new.new %>
+  </div>
+</div>
+<%= render 'shared/recipe_foods_table' %>

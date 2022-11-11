@@ -1,0 +1,28 @@
+<div class="pb-recipes">
+
+<h1 >Public recipes</h1>
+
+  <% @public_recipes.each do |recipe| %> 
+  
+<div class="one-rec p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mb-2">
+    <div class="rec">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><%= recipe.name %></h5>
+      <h3>By: <%= recipe.user.name %></h3>
+    </div>
+    <div class="rec"> 
+    <p>Total food items: <%= recipe.foods.count %></p>
+
+    <% cost = recipe.foods.map do |recipe_food| %>
+      <% recipe_food.price * recipe_food.quantity %>
+    <% end %>
+      
+    <p>Total price: <%= "$#{cost.sum}" %></p>
+    </div>  
+    </div>
+      
+    
+
+  <% end %>
+
+
+</div>

@@ -1,0 +1,146 @@
+<nav data-controller="header" class="flex items-center bg-yellow-100 fixed top-0 w-full border-b border-orange-300 px-2 h-20 rounded dark:bg-gray-900">
+  <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <div class="flex gap-4">
+      <a href="/" class="flex items-center">
+        <img src="https://i.postimg.cc/ZKG1rqnm/pexels-ash-376464.jpg" class="mr-3 h-6 sm:h-9" alt="Surreal recipes logo">
+        <div class="flex flex-col justify-center">
+          <span class="text-orange-900 font-semibold tracking-widest text-2xl whitespace-nowrap dark:text-white">Surreal</span>
+          <span class="pl-2 uppercase text-orange-500 tracking-widest font-semibold text-xs">recipes</span>
+        </div>
+      </a>
+
+      <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-dropdown-menu">
+        <ul class="flex bg-yellow-100 flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <li class="uppercase font-semibold text-orange-900 tracking-widest hover:text-orange-500 transition ease-in duration-100">
+            <a class=""><%= link_to 'Home', root_path %></a>
+          </li>
+          <li data-header-target="openRecipeMenu">
+            <button
+              class="uppercase hover:text-orange-500 transition ease-in duration-100 font-semibold text-orange-900 tracking-widest flex justify-between items-center">
+              Recipes
+              <svg class="ml-1 w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              class="hidden absolute top-16 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+              id="recipe-dropdown-menu"
+              data-transition-enter="transition ease-out duration-100"
+              data-transition-enter-start="transform opacity-0 scale-95"
+              data-transition-enter-end="transform opacity-100 scale-100"
+              data-transition-leave="transition ease-in duration-75"
+              data-transition-leave-start="transform opacity-100 scale-100"
+              data-transition-leave-end="transform opacity-0 scale-95"
+            >
+              <ul class="text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownNavbarButton">
+                <% if user_signed_in? %>
+                  <li class="block py-2 px-4 hover:bg-yellow-100 dark:hover:bg-gray-600 dark:hover:text-white transition ease-in duration-100">
+                    <a><%= link_to 'Create Reccipe', new_recipe_path %></a>
+                  </li>
+                  <li class="block py-2 px-4 hover:bg-yellow-100 dark:hover:bg-gray-600 dark:hover:text-white transition ease-in duration-100">
+                    <a><%= link_to 'My Recipes', recipes_path %></a>
+                  </li>
+                <% end %>
+                <li class="block py-2 px-4 hover:bg-yellow-100 dark:hover:bg-gray-600 dark:hover:text-white transition ease-in duration-100">
+                  <a><%= link_to 'Public Recipes', public_recipes_path %></a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <% if user_signed_in? %>
+            <li data-header-target="openFoodMenu">
+              <button
+                class="uppercase hover:text-orange-500 transition ease-in duration-100 font-semibold text-orange-900 tracking-widest flex justify-between items-center">
+                Foods
+                <svg class="ml-1 w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </button>
+              <!-- Dropdown menu -->
+              <div
+                class="hidden absolute top-16 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                id="food-dropdown-menu"
+                data-transition-enter="transition ease-out duration-100"
+                data-transition-enter-start="transform opacity-0 scale-95"
+                data-transition-enter-end="transform opacity-100 scale-100"
+                data-transition-leave="transition ease-in duration-75"
+                data-transition-leave-start="transform opacity-100 scale-100"
+                data-transition-leave-end="transform opacity-0 scale-95"
+              >
+                <ul class="text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownNavbarButton">
+                    <li class="block py-2 px-4 hover:bg-yellow-100 dark:hover:bg-gray-600 dark:hover:text-white transition ease-in duration-100">
+                      <a><%= link_to 'My foods', foods_path %></a>
+                    </li>
+                    <li class="block py-2 px-4 hover:bg-yellow-100 dark:hover:bg-gray-600 dark:hover:text-white transition ease-in duration-100">
+                      <a><%= link_to 'Add Food', new_food_path %></a>
+                    </li>
+                </ul>
+              </div>
+            </li>
+          <% end %>
+          <li class="uppercase font-semibold text-orange-900 tracking-widest transition ease-in duration-100">
+            Quick & Easy
+          </li>
+          <li class="uppercase font-semibold text-orange-900 tracking-widest transition ease-in duration-100">
+            Healthy & Light
+          </li>
+          <li class="uppercase font-semibold text-orange-900 tracking-widest transition ease-in duration-100">
+            About us
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <div class="flex items-center md:order-2">
+      <button data-header-target="openUserMenu" type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-orange-300 dark:focus:ring-orange-700" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+        <% if current_user %>
+          <img class="w-8 h-8 rounded-full" alt="user photo" src="https://i.postimg.cc/ZKG1rqnm/pexels-ash-376464.jpg">
+        <% else %>
+          <img class="w-8 h-8 rounded-full" alt="user photo" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y">
+        <% end %>
+      </button>
+      <!-- Dropdown menu -->
+      <div class="hidden absolute top-12 right-0 z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+           id="user-dropdown-menu"
+           data-transition-enter="transition ease-out duration-100"
+           data-transition-enter-start="transform opacity-0 scale-95"
+           data-transition-enter-end="transform opacity-100 scale-100"
+           data-transition-leave="transition ease-in duration-75"
+           data-transition-leave-start="transform opacity-100 scale-100"
+           data-transition-leave-end="transform opacity-0 scale-95"
+      >
+        <div class="py-3 px-4">
+          <span class="block text-sm text-gray-900 dark:text-white"><%= current_user&.name %></span>
+          <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400"><%= user_signed_in? ? current_user.name : "Not logged in" %><%= '@surrealrecipes.com' if user_signed_in? %></span>
+        </div>
+        <ul class="py-1">
+          <li class="py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition ease-in duration-100">
+            <a href="#" class="block"><%= link_to 'My Profile',  edit_user_registration_path %></a>
+          </li>
+          <% if user_signed_in? %>
+            <li class="py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition ease-in duration-100">
+              <a href="#" class="block" ><%= link_to 'Add food', new_food_path %></a>
+            </li>
+            <li class="py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition ease-in duration-100">
+              <a href="#" class="block"><%= link_to 'Create Recipe', new_recipe_path %></a>
+            </li>
+          <% end %>
+          <li>
+            <a href="#" class="opacity-50 block py-2 px-4 text-sm text-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition ease-in duration-100">Settings</a>
+          </li>
+          <% unless user_signed_in? %>
+            <li class="py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition ease-in duration-100">
+              <a href="#" class="block"><%= link_to 'Sign up', new_user_registration_path %></a>
+            </li>
+          <% end %>
+          <li class="py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white transition ease-in duration-100">
+            <a href="#" class="block"><%= user_signed_in? ? link_to('Sign out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure'}) : link_to('Sign in', new_user_session_path) %></a>
+          </li>
+        </ul>
+      </div>
+      <button data-header-target="openMobileMenu" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+      </button>
+    </div>
+  </div>
+</nav>

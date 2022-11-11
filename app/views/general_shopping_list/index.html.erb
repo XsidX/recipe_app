@@ -1,0 +1,40 @@
+<div class="px-4 mb-4">
+  <h2 class="text-center text-orange-900"> Shopping List </h2>
+  <div class="flex justify-between text-orange-700 mt-6">
+    <p> Amount of food to buy: <%=@foods.count%></p>
+    <p> Total Price: <%= @total %></p>
+  </div>
+</div>
+<div class="overflow-x-auto relative">
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+      <th scope="col" class="py-3 px-6">
+        Food
+      </th>
+      <th scope="col" class="py-3 px-6">
+        Quantity
+      </th>
+      <th scope="col" class="py-3 px-6">
+        Price
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @foods.each do |food| %>
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          <%= food.name %>
+        </th>
+        <td class="py-4 px-6">
+          <%= food.quantity %>
+        </td>
+        <td class="py-4 px-6">
+          $ <%= food.quantity * food.price %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

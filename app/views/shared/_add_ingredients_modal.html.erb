@@ -1,0 +1,77 @@
+<div
+  id="ingredient-modal"
+  class="hidden absolute top-full -right-4 z-10 max-w-96 bg-white rounded shadow dark:bg-gray-700"
+  data-transition-enter="transition ease-out duration-100"
+  data-transition-enter-start="transform opacity-0 scale-95"
+  data-transition-enter-end="transform opacity-100 scale-100"
+  data-transition-leave="transition ease-in duration-75"
+  data-transition-leave-start="transform opacity-100 scale-100"
+  data-transition-leave-end="transform opacity-0 scale-95"
+>
+<!--  search-->
+  <div class="p-3">
+    <label for="input-group-search" class="sr-only">Search</label>
+    <div class="relative">
+      <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+      </div>
+      <input type="text" id="input-group-search" class="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="Search ingredient...">
+    </div>
+  </div>
+
+<!--  table-->
+  <div class="overflow-y-auto relative sm:rounded-lg max-h-56">
+    <%= form_with model: recipe_food, url: recipe_foods_path do |f| %>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="py-2 px-6">
+            Ingredient
+          </th>
+          <th scope="col" class="py-2 px-6">
+            Stock
+          </th>
+          <th scope="col" class="py-2 px-6">
+            Quantity needed
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @foods.each do |food| %>
+            <tr class="<%= @recipe_foods.any? { |recipe_food| recipe_food.food_id == food.id } ? 'hidden': ''%> bg-white dark:bg-gray-800 dark:border-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600 group transition ease-in duration-100">
+              <th scope="row" class="py-2 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <%= f.check_box :food_id, {multiple: true, class: "check-box w-4 h-4 text-orange-600 bg-gray-100 rounded border-gray-300 focus:ring-0 focus:ring-offset-0 dark:border-gray-500", data: { modals_target: "enableNumberField", index: food.id}}, food.id, nil %>
+                <%= f.hidden_field :recipe_id, value: @recipe.id %>
+                <label for="food_id" class="ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300"><%= food.name %></label>
+              </th>
+              <td class="py-2 px-6">
+                <%= food.quantity %>
+              </td>
+              <td class="py-4 px-6">
+                <div class="flex w-20" id="number-field-<%= food.id %>">
+                  <%= f.number_field :quantity, { multiple: true, class: "border-none group-hover:bg-gray-100 outline-none focus:outline-none text-center w-full flex items-center text-gray-700  outline-none", min: "0", max: "900", disabled: true } %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" class="py-5 px-6 no-ingredient <%= @recipe_foods.all? { |recipe_food| recipe_food.food_id == food.id } ? 'hidden': ''%>">
+                <div class="flex justify-between">
+                  No ingredients found!
+                  <button type="button" class="ml-2 text-sm font-medium text-orange-600 hover:text-orange-800 dark:text-gray-300 transition ease-in duration-100"><%= link_to 'ReStock', new_food_path %></button>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+  <button type="submit" class="w-full text-orange-800 hover:text-orange-900 bg-yellow-100 hover:bg-yellow-200 mt-1 px-6 py-3 transition ease-in duration-100">
+    Add ingredients
+  </button>
+  <% end %>
+</div>
+
+
+
+
+
