@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :foods, except: [:edit, :update]
 
-  resources :recipes, only: [:index, :show, :destroy, :update]
+  resources :recipes, only: [:index, :show, :new, :create, :destroy, :update]
   resources :recipe_foods, only: [:create, :update]
 
   get "/general_shopping_list", to: "general_shopping_list#index"
