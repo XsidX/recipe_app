@@ -2,7 +2,7 @@ class FoodsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @foods = Food.includes(current_user.id)
+    @foods = Food.where(user: current_user).includes(:user)
   end
 
   def new
