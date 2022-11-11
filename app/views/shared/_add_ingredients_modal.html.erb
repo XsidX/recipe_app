@@ -57,7 +57,7 @@
               <td colspan="3" class="py-5 px-6 no-ingredient <%= @recipe_foods.all? { |recipe_food| recipe_food.food_id == food.id } ? 'hidden': ''%>">
                 <div class="flex justify-between">
                   No ingredients found!
-                  <button type="button" class="ml-2 text-sm font-medium text-orange-600 hover:text-orange-800 dark:text-gray-300 transition ease-in duration-100">ReStock</button>
+                  <button type="button" class="ml-2 text-sm font-medium text-orange-600 hover:text-orange-800 dark:text-gray-300 transition ease-in duration-100"><%= link_to 'ReStock', new_food_path %></button>
                 </div>
               </td>
             </tr>
