@@ -18,7 +18,7 @@ RSpec.describe 'Testing recipes view', type: :feature do
 
     it 'Check if delete button are displayed' do
       within('body') do
-        expect(find_all('button').length).to eq 6
+        expect(find_all('button').length).to eq 10
       end
     end
   end
