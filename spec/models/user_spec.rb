@@ -9,5 +9,4 @@ RSpec.describe User, type: :model do
   it 'name should not be nil' do
     expect(subject).to_not be_valid
   end
-
 end
