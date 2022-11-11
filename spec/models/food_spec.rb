@@ -28,5 +28,4 @@ RSpec.describe Food, type: :model do
   it 'should have a quantity' do
     expect(subject.quantity).to eql(100)
   end
-
 end
