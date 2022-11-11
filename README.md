@@ -18,15 +18,15 @@ To get a local copy up and running follow these simple example steps.
 
 ### Setup
 
-- Clone the repository using `git clone git@github.com:XsidX/blog_app.git`
-- Navigate to the folder using `cd blog_app`
+- Clone the repository using `git@github.com:XsidX/recipe_app.git`
+- Navigate to the folder using `cd recipe_app`
 - Use the following commands to
     - install necessary gems `bundle install`
     - run `rails assets:precompile`
     - run the development server `./bin/dev`
     
 ### Testing
-- run `rails assets:precompile` before runnibg the tests
+- run `rails assets:precompile` before running the tests
 - to run the tests, do: `rspec`
 
 ## Author
