@@ -14,26 +14,32 @@
  *= require_self
  */
 .pb-recipes h1 {
-    font-size: 2rem;
-    font-weight: 500;
-    text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
 }
 
 .one-rec {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .food-table {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
+}
+
+.food-table th {
+  border-left: 1px solid #727272;
+  border-right: 1px solid #727272;
+  padding-bottom: 15px;
 }
 
 .wrapper {
-    margin-top: 50px;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.192);
+  margin-top: 50px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.192);
 }
