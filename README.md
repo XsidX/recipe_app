@@ -37,6 +37,12 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@\_sid_o](https://twitter.com/_sid_o_)
 - LinkedIn: [Sidney Kaguli](https://www.linkedin.com/in/sidney-kaguli)
 
+
+👤 **Chrispaix Kaze**
+
+- GitHub: [@Chrispaix Kaze](https://github.com/ChrispaixK)
+- Twitter: [@Chrispaix Kaze](https://twitter.com/ChrispaixK)
+- LinkedIn: [Chrispaix Kaze](https://www.linkedin.com/in/chrispaix-kaze-70445a175/)
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
