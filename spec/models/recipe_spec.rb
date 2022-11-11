@@ -7,7 +7,8 @@ RSpec.describe Recipe, type: :model do
     end
 
     it 'Check recipe name' do
-      recipe = Recipe.create name: 'Sambusa', cooking_time: 5, preparation_time: 60, description: 'Samusa is a well known',
+      recipe = Recipe.create name: 'Sambusa', cooking_time: 5,
+                             preparation_time: 60, description: 'Samusa is a well known',
                              public: true, user: @user
       expect(recipe.name).to eql('Sambusa')
     end
